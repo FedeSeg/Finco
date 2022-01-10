@@ -4,10 +4,12 @@ import Axios from 'axios';
 function useNextPage(offset) {
 
     const [ movementList, setMovementList] = useState([])
+    const [token,setToken] = useState(sessionStorage.getItem('token'))
+
+    const user = JSON.parse(sessionStorage.getItem('user'))
 
     useEffect(() => {
-        const user = JSON.parse(sessionStorage.getItem('user'))
-        const token = sessionStorage.getItem('token')
+        if(user) {
         Axios.get(`https://api.finerio.mx/api/users/${user.id}/movements`, {
                 headers: {
                     Authorization: 'Bearer ' + token
@@ -26,7 +28,9 @@ function useNextPage(offset) {
                     return [...prevMovementList, ...response.data.data]
                 });
             })
+        }
     }, [offset])
+
     return movementList
 }
 export default useNextPage
