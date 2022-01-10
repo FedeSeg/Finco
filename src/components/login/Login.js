@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import logo from './assets/finerio-logo.png';
 import Axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import './assets/Login.css';
 
 function Login() {
     const [ username, setUsername] = useState('');
@@ -34,12 +35,12 @@ function Login() {
     return (
         <div className='login-form'>
                  <img className='logo' src={logo} alt='logo finerio'/>
-                 <h2>Iniciar Sesión</h2>
-                 <input type='email' name='Email' onChange={(e) => {setUsername(e.target.value)}}></input>
+                 <h2 className='titulo-inicio'>Iniciar Sesión</h2>
+                 <input className='input' type='email' name='Email' placeholder='Email' onChange={(e) => {setUsername(e.target.value)}}></input>
                  <br></br>
-                 <input type='password' name='Contraseña' onChange={(e) => {setPassword(e.target.value)}}></input>
+                 <input className='input' type='password' name='Contraseña' placeholder='Password' onChange={(e) => {setPassword(e.target.value)}}></input>
                  <br></br>
-                 <button onClick={handleLogin} >Entrar</button>
+                 <button className='entrar' onClick={handleLogin} >Entrar</button>
         </div>
     )
 }

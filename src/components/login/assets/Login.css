@@ -1,0 +1,50 @@
+.login-form {
+        text-align: center;
+        padding-top: 100px;
+}
+.logo {
+    text-align: center;
+}
+.titulo-inicio {
+    font-size: 25px;
+}
+.input {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-width: 2px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    width: 80vw
+}
+.entrar {
+    padding-top: 5px;
+    padding-bottom: 10px;
+    border-color: #17307b;
+    margin-bottom: 10px;
+    width: 80vw;
+    background-color: #2bc2fd;
+    border-radius: 5px;
+    font-size: 20px;
+}
+
+/*Tablets*/
+@media (min-width: 481px) {
+    .input {
+        width: 60vw
+    }
+    .entrar {
+        width: 60vw;
+    }
+    
+}
+/*Laptops*/
+@media (min-width: 769px) {
+    .input {
+        width: 40vw
+    }
+    .entrar {
+        width: 40vw;
+    }
+    
+
+}

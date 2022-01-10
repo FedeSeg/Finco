@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import useNextPage from '../hooks/useNextPage';
-import './List.css'
+import './assets/List.css'
 
 function List(props) {
   const toThousand = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.')
@@ -25,8 +25,8 @@ function List(props) {
   })
 
   return (
-    <table>
-        <thead>
+    <table className='listTable'>
+        <thead className='listHead'>
         <tr>
             <th>Cuenta</th>
             <th>Fecha</th>
@@ -40,20 +40,20 @@ function List(props) {
                 if (movementList.length === (index + 1)) {
                     return (
                         <tr ref={lastElmentRef} key={index} className='row'>
-                        <td className="center">{item.account.name}</td>
-                        <td className="center">{formatDate(item.date)}</td>
+                        <td>{item.account.name}</td>
+                        <td>{formatDate(item.date)}</td>
                         <td>{item.description}</td>
-                        <td className="center">{item.concepts[0].category.name}</td>
+                        <td>{item.concepts[0].category.name}</td>
                         <td>${toThousand(item.amount)}</td>   
                     </tr>
                     )
                 } else {
                     return (
                         <tr key={index} className='row'>
-                            <td className="center">{item.account.name}</td>
-                            <td className="center">{formatDate(item.date)}</td>
+                            <td >{item.account.name}</td>
+                            <td >{formatDate(item.date)}</td>
                             <td>{item.description}</td>
-                            <td className="center">{item.concepts[0].category.name}</td>
+                            <td >{item.concepts[0].category.name}</td>
                             <td>${toThousand(item.amount)}</td>   
                         </tr>
                     )
