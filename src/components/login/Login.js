@@ -11,25 +11,19 @@ function Login() {
 
     let navigate = useNavigate();
         
-    const handleLogin = () => {
-        Axios.post('https://api.finerio.mx/api/login', {
+    const handleLogin = async () => {
+        const login_response = await Axios.post('https://api.finerio.mx/api/login', {
             username: username,
             password: password,
-        }).then((response) => {
-            
-            if (!response) {
-                navigate('/')     
-            } else {
-                sessionStorage.setItem ('token', response.data.access_token)
-                Axios.get('https://api.finerio.mx/api/me', {headers: {
-                    Authorization: 'Bearer ' + response.data.access_token
-                }})
-                .then((response) => {
-                    sessionStorage.setItem ('user', JSON.stringify(response.data))
-                })
-                navigate('/movements')         
-            }
         });
+        sessionStorage.setItem ('token', login_response.data.access_token)
+
+        const me_response = await Axios.get('https://api.finerio.mx/api/me', {headers: {
+            Authorization: 'Bearer ' + login_response.data.access_token
+        }})
+        sessionStorage.setItem ('user', JSON.stringify(me_response.data))
+
+        navigate('/movements')
     }
     
     return (
